@@ -1,0 +1,80 @@
+CS3354 – Spring 2019 – Assignment 1
+Due date: Wed Feb 13th at 11:55 p.m.
+
+Project Title: Album Catalog
+Goal: The goal of this assignment is to help students familiarize themselves with the following
+Java programming concepts:
+1.Input/Output to and from the terminal.
+2. Storing data in a file and reading data from a file.
+3.Creating object-oriented classes and methods to handle data.
+4. Using data structures to store data in main memory (e.g. ArrayList).
+5. Working with character strings.
+6. Using Javadoc comments and generating and html documentation of the program.
+
+Description:
+For this assignment you will create a program to manage an album collection. Your program will
+allow the user to add new albums, display a list of all albums in the collection, search for a
+specific album, delete a specific album. Your program should provide the user with a console or
+command line choice menu about possible actions that they can perform. The choices should be
+the following:
+
+1. Display	list	of	all	albums	in	the	collection.
+2. Add	a	new	album	to	the	collection.
+3. Search	for an	album	given	the	name	of	the	artist	or	title	of	the	
+album or	part	of	the	name	of	the	artist	or	title	of	the	album.
+4. Delete	an	album	from	the	collection.
+5. Exit	program.
+To represent an item in your program, create a class named Album with the following fields:
+• title - string
+• artist - string
+• releaseYear - int
+• genre – enum MusicGenre
+
+The MusicGenre can be only one of the following: “ROCK”,	“RAP”,	“COUNTRY”,	
+“POP”.
+
+When the program first loads, it reads all the saved albums (if any) from a file named
+database.txt into an ArrayList. While the program is running, the user can choose any of
+the 5 available options. When the user selects the option 5 (exit program), the program stores the
+current contents of the ArrayList to the file (replacing the old contents) and exits. During the
+program execution, if the user chooses to add or delete items, only the ArrayList will be updated.
+The database.txt file will be updated automatically only when the program is about to exit.
+In other words, when the user selects option 5, the program first saves all the contents of the
+ArrayList into the text file, and then exits.
+
+The format of the contents of the database.txt file should be in human readable plain text,
+one record per line (note the ~ separator between different entries) For example:
+Deftones~White	Pony~2000~0
+UGK~Ridin’	Dirty~1996~1
+Josh	Abbott	Band~Scapegoat~2012~3
+For display, albums should be printed to the console in the following format in alphabetical order
+by album title. Override the toString() method to return this format.
+
+Title:	Ridin’	Dirty,	Artist:	UGK,	Year:	1996,	Genre:	Rap
+Title:	Scapegoat,	Artist:	Josh	Abbott	Band,	Year:	2012,	Genre:	Country
+Title:	White	Pony,	Artist:	Deftones,	Year:	2000, Genre:	Rock
+
+NOTES:
+• This assignment is to be done individually.
+• You may use an IDE (e.g. BlueJ, Netbeans, Eclipse) or just an editor (e.g. Notepad+,
+Atom) and command line operations (javac, java) in Unix or Windows/DOS to develop
+your program.
+• Use good design (don’t put everything in one class).
+• Use a package name albumcollection for your classes and put your files in the appropriate
+directory structure.
+• Be sure to validate the user input for the release year and the genre.
+• You don't need to create any GUI for this assignment. Command line operations are
+enough.
+• Use a standard Java coding style to improve your program’s visual appearance and make
+it more readable, e.g. BlueJ coding style: http://www.bluej.org/objectsfirst/styleguide.html or Google	Java	style	guide:	
+https://google.github.io/styleguide/javaguide.html
+• Use javadoc comments for ALL your classes and methods.
+
+SUBMISSION GUIDELINE
+Your homework is submitted as electronic copy only, using the Assignments tool on the TRACS
+website. Do NOT include executable .class or .jar files in your submission. Only .java files.
+Assignment submission steps
+1. zip the following files src/albumcollection/*.java and src/database.txt and submit the .zip
+file.
+2. Rename the single zip file to assign1_xxxxxx. The xxxxxx is your TX State NetID.
+3. Submit using TRACS. 
