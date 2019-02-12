@@ -1,0 +1,100 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.*;
+import java.io.FileWriter;
+
+
+enum MusicGenre {
+    ROCK, RAP, COUNTRY, POP;
+}
+
+public class MainApp
+{
+    static ArrayList<Album> collection = new ArrayList<>();
+
+    public static void main(String[] args) throws Exception{
+
+        // Load Saved Albums from file dataase.txt
+        // //Assuming you have a text file in D drive
+        loadContentsFromFile("database.txt");
+
+        // Print Options to the User
+        System.out.println("1. Display list of all albums in the collection");
+        System.out.println("2. Add a new album to the collection");
+        System.out.println("3. Search for an album given the name of the artist or titleof the album or part of the name of the artist or title of the album ");
+        System.out.println("4. Delete an album from the collection");
+        System.out.println("5. Exit Program");
+
+        while(true) {
+
+            Scanner sc = new Scanner(System.in);
+            int input = sc.nextInt();
+
+            if(input == 1)
+                System.out.println(Arrays.toString(collection.toArray()));
+
+            if(input == 5){
+                FileWriter writer = new FileWriter("D:\\database.txt");
+                for(Album a : collection)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(a.title);
+                    sb.append("~");
+                    sb.append(a.artist);
+                    sb.append("~");
+                    sb.append(a.releaseYear);
+                    sb.append("~");
+                    sb.append(a.genre.ordinal());
+                    writer.write(sb.toString());
+                }
+                writer.close();
+                System.exit(0);
+            }
+        }
+    }
+
+    static void loadContentsFromFile(String file) throws Exception{
+        // Read data from file
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+
+            // Read file line by line
+            String line = "";
+            while ((line = br.readLine()) != null)
+                collection.add(new Album(line));
+        }
+    }
+}
+
+
+class Album
+{
+
+    public String title;
+    public String artist;
+    public int releaseYear;
+    public MusicGenre genre;
+
+    public Album(){
+
+    }
+
+    public Album(String line) {
+        String[] split = line.split("~");
+        title = split[0];
+        artist = split[1];
+        releaseYear = Integer.parseInt(split[2]);
+        genre = MusicGenre.values()[Integer.parseInt(split[3])];
+    }
+
+    public String toString() {
+        return "Title: " + this.title + ", "
+                + "Artist: " + this.artist + ", "
+                + "Year: " + this.releaseYear + ", "
+                + "Genre: " + this.genre;
+    }
+}
+
