@@ -19,7 +19,7 @@ public class MainApp {
       //  System.out.println("4. Delete an album from the collection");
       //  System.out.println("5. Exit Program");
       //  Scanner sc = new Scanner(System.in);
-        while (true) {
+      //  while (true) {
            // Scanner fin = new Scanner(DATABASE_FILE);
             //int input = sc.nextInt();
 
@@ -32,10 +32,12 @@ public class MainApp {
 
         try {
             Scanner scanner = new Scanner(file);
+            int count = 0;
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String [] album = line.split("~");
-                System.out.print(album.toString());
+                System.out.print(album[count]);
+                count++;
 
 
             }
@@ -44,4 +46,3 @@ public class MainApp {
             System.out.println("Exception: " + ex);
         }
     }
-}
