@@ -6,7 +6,7 @@ public class MainApp {
     private static ArrayList<Album> albumCollection = new ArrayList<Album>();
     public static void main(String[] args) {
 
-        Album alb = new Album("Thunderstruck", "ACDC", 1983);
+        Album alb = new Album("Thunderstruck", "ACDC", 1983, genre.ROCK);
 
         //System.out.println(alb.toString());
         readFile();
@@ -29,7 +29,7 @@ private static void readFile(){
             String art = arr[1];
             int year = Integer.parseInt(arr[2]);
             genre gen = genre.values()[Integer.parseInt(arr[3])];
-            Album a = new Album(title, art, year);
+            Album a = new Album(title, art, year, gen);
             albumCollection.add(a);
             count++;
         }
@@ -47,22 +47,30 @@ private static void add(){
         int relyr = input.nextInt();
         System.out.println("Enter the Genre: 1-RAP, 2- ROCK, 3- COUNTRY, 4- POP: ");
         int genreInput=0;
+        genreInput = input.nextInt();
         if(genreInput == 1){
-            genre gen = genre.RAP;
+             genre gen = genre.RAP;
+             Album a = new Album(title, art, relyr, gen);
+             albumCollection.add(a);
         }
         else if(genreInput == 2){
-            genre gen = genre.ROCK;
+             genre gen = genre.ROCK;
+             Album a = new Album(title, art, relyr, gen);
+             albumCollection.add(a);
         }
         else if (genreInput == 3){
-            genre gen = genre.COUNTRY;
+             genre gen = genre.COUNTRY;
+             Album a = new Album(title, art, relyr, gen);
+             albumCollection.add(a);
         }
         else if (genreInput == 4){
-            genre gen = genre.POP;
+             genre gen = genre.POP;
+             Album a = new Album(title, art, relyr, gen);
+             albumCollection.add(a);
         }
         else{
             System.out.println("Error: invalid input");
         }
-        Album a = new Album(title, art, relyr);
-        System.out.println(a.toString());
+        System.out.println(albumCollection.toString());
 }
 }
